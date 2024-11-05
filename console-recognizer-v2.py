@@ -2,7 +2,7 @@ import subprocess
 import time
 import speech_recognition as sr
 from word2number import w2n
-
+from env import COMMAND_LOCAL_PATH,INSTANCE_TYPE
 # Initialize recognizer and other variables
 recognizer = sr.Recognizer()
 process = None
@@ -175,7 +175,7 @@ def run_symfony_command():
 
     print("Starting Symfony make:entity command in WSL...")
     process = subprocess.Popen(
-        ["wsl", "php", "/mnt/d/work/voice/console-recognition-creator/sym/bin/console", "make:entity"],
+        [INSTANCE_TYPE, "php", COMMAND_LOCAL_PATH, "make:entity"],
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
